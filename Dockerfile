@@ -5,7 +5,7 @@ RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers geoip-dev
   && chmod a+x /usr/bin/confd \
   && pip install gunicorn
 
-ENV VERSION=daa06f7c3c8b8367fe1ffd3beb3251c071b06056
+ENV VERSION=c70d40167a41f63f396545bc87bf6e2b7dbd496e
 
 RUN mkdir /openvpn-monitor \
   && wget -O - https://github.com/furlongm/openvpn-monitor/archive/${VERSION}.tar.gz | tar -C /openvpn-monitor --strip-components=1 -zxvf - \
