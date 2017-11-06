@@ -1,0 +1,15 @@
+after_script:
+  - docker images
+
+language: bash
+
+script:
+  - docker build -t openvpn-monitor .
+  - docker run --name openvpn-monitor -p 8888:80 -d openvpn-monitor
+  - sleep 3
+  - curl http://localhost:8888 | grep "Example OpenVPN Status Monitor"
+  - docker logs openvpn-monitor
+  - docker kill openvpn-monitor
+
+services: docker
+

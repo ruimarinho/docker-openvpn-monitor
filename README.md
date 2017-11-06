@@ -2,6 +2,7 @@
 
 Run the [web-based OpenVPN Monitor](http://openvpn-monitor.openbytes.ie) in Docker.
 
+[![build status][travis-image]][travis-url]
 [![ruimarinho/openvpn-monitor][docker-stars-image]][docker-hub-url]  [![ruimarinho/openvpn-monitor][docker-pulls-image]][docker-hub-url]  
 
 ## What is OpenVPN Monitor?
@@ -69,3 +70,5 @@ MIT
 [docker-hub-url]: https://hub.docker.com/r/ruimarinho/openvpn-monitor
 [docker-pulls-image]: https://img.shields.io/docker/pulls/ruimarinho/openvpn-monitor.svg?style=flat-square
 [docker-stars-image]: https://img.shields.io/docker/stars/ruimarinho/openvpn-monitor.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/ruimarinho/docker-openvpn-monitor.svg?style=flat-square
+[travis-url]: https://travis-ci.org/ruimarinho/docker-openvpn-monitor
