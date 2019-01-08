@@ -15,7 +15,7 @@ RUN apk del .build-dependencies
 
 RUN mkdir -p /usr/share/GeoIP/ \
   && cd /usr/share/GeoIP/ \
-  && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz \
+  && wget https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz \
   && gunzip GeoLiteCity.dat.gz \
   && mv GeoLiteCity.dat GeoIPCity.dat
 
