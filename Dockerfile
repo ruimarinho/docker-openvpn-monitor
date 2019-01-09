@@ -17,7 +17,9 @@ RUN apk del .build-dependencies
 RUN mkdir -p /usr/share/GeoIP/ \
   && cd /usr/share/GeoIP/ \
   && wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
-  && tar zxvf GeoLite2-City.tar.gz --strip-components=1 GeoLite2-City_20190101/GeoLite2-City.mmdb
+  && tar zxvf GeoLite2-City.tar.gz \
+  && mv GeoLite2-City_*/GeoLite2-City.mmdb . \
+  && rm -r GeoLite2-City_*
   # this tiny tar doesn't allow wildcards. therefore db build date is hardcoded...
   # also it does not have --no-anchored flag :/
 
