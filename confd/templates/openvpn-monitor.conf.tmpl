@@ -6,7 +6,7 @@ datetime_format={{ replace (getv (printf "/openvpnmonitor/default/%s" $i)) "%%" 
 {{$i}}={{ getv (printf "/openvpnmonitor/default/%s" $i) -}}
 {{end -}}
 {{end}}
-geoip_data=/usr/share/GeoIP/GeoIPCity.dat
+geoip_data=/var/lib/GeoIP/GeoLite2-City.mmdb
 {{ if not (exists "/openvpnmonitor/default/datetimeformat") -}}
 datetime_format=%d/%m/%Y %H:%M:%S
 {{end}}
