@@ -17,6 +17,12 @@ First, make sure OpenVPN is configured to open the management interface that the
 management 127.0.0.1 5555
 ```
 
+Note: if you're running OpenVPN in a container as well, allow for external connections with:
+
+```
+management 0.0.0.0 5555
+```
+
 All settings of OpenVPN Monitor can be dynamically configured via environment variables (thanks to confd) without having to create a new image or bind-mounting the configuration file.
 
 The environment variable are organized into two groups:
