@@ -1,5 +1,7 @@
 FROM python:3-alpine
 
+ARG MAXMIND_LICENSE_KEY
+
 ENV VERSION=ed346321ec2dbd3298ca52e5f6cd30407f3e343a
 
 RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers musl-dev openssl tar \
@@ -12,7 +14,7 @@ RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers musl-dev 
   && pip install /openvpn-monitor \
   && apk del --no-cache .build-dependencies \
   && mkdir -p /var/lib/GeoIP/ \
-  && wget -O - https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf -
+  && wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf -
 
 COPY confd /etc/confd
 COPY entrypoint.sh /
