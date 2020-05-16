@@ -39,6 +39,7 @@ jobs:
       - name: Build multi-platform Docker image
         env:
           MAXMIND_LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
+          UPSTREAM_VERSION: fe2f7fea5e5cb0f3899e910f809f18c67025e188
         run: |
           docker buildx build --platform ${{ steps.prepare.outputs.docker_platforms }} \
             --output "type=image,push=true" \
@@ -46,6 +47,7 @@ jobs:
             --build-arg "MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY}" \
             --build-arg "VCS_REF=${GITHUB_SHA::8}" \
             --build-arg "VERSION=${{ steps.prepare.outputs.version }}" \
+            --build-arg "UPSTREAM_VERSION=${UPSTREAM_VERSION}" \
             --tag "${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}" \
             --tag "${{ steps.prepare.outputs.docker_image }}:latest" \
             .
