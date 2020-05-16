@@ -1,9 +1,17 @@
 # ruimarinho/openvpn-monitor
 
-Run the [web-based OpenVPN Monitor](http://openvpn-monitor.openbytes.ie) in Docker.
-
-[![build status][travis-image]][travis-url]
+[![build status][github-image]][github-url]
 [![ruimarinho/openvpn-monitor][docker-stars-image]][docker-hub-url]  [![ruimarinho/openvpn-monitor][docker-pulls-image]][docker-hub-url]
+
+The trusted multi-platform [web-based OpenVPN Monitor](http://openvpn-monitor.openbytes.ie) docker image.
+
+* `amd64` (`x86_64`)
+* `arm64` (`aarch64`, `armv8`)
+* `arm32v7` (`armv7`)
+* `arm32v6` (`armv6`)
+* `i386`
+* `ppc64le`
+* `s390x`
 
 ## What is OpenVPN Monitor?
 
@@ -77,5 +85,5 @@ MIT
 [docker-hub-url]: https://hub.docker.com/r/ruimarinho/openvpn-monitor
 [docker-pulls-image]: https://img.shields.io/docker/pulls/ruimarinho/openvpn-monitor.svg?style=flat-square
 [docker-stars-image]: https://img.shields.io/docker/stars/ruimarinho/openvpn-monitor.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/ruimarinho/docker-openvpn-monitor.svg?style=flat-square
-[travis-url]: https://travis-ci.org/ruimarinho/docker-openvpn-monitor
+[github-image]: https://github.com/ruimarinho/docker-openvpn-monitor/workflows/build/badge.svg
+[github-url]: https://github.com/ruimarinho/docker-openvpn-monitor/actions
