@@ -3,7 +3,7 @@
 Run the [web-based OpenVPN Monitor](http://openvpn-monitor.openbytes.ie) in Docker.
 
 [![build status][travis-image]][travis-url]
-[![ruimarinho/openvpn-monitor][docker-stars-image]][docker-hub-url]  [![ruimarinho/openvpn-monitor][docker-pulls-image]][docker-hub-url]  
+[![ruimarinho/openvpn-monitor][docker-stars-image]][docker-hub-url]  [![ruimarinho/openvpn-monitor][docker-pulls-image]][docker-hub-url]
 
 ## What is OpenVPN Monitor?
 
@@ -30,7 +30,7 @@ The environment variable are organized into two groups:
 - `OPENVPNMONITOR_DEFAULT_<PROPERTY>`: populates the global `[OpenVPN-Monitor]` section.
 - `OPENVPNMONITOR_SITES_<INDEX>_<PROPERTY>`: populates each site section. **Note: if property contains underscores, like `datetime_format` and `show_disconnect`, you must pass those properties without the underscore. See example below.**
 
-By default, GeoIP is automatically available (no additional download step is required). For this reason, the location of the `geoip_data` file is hardcoded in the configuration file. The `datetime_format` defaults to `%d/%m/%Y %H:%M:%S` if none is provided. Everything else must be set and there is not whitelist of property names. This ensures compatibility of this image with future versions of OpenVPN monitor without too much maintenance.
+By default, GeoIP is automatically available (no additional download step is required). For this reason, the location of the `geoip_data` file is hardcoded in the configuration file. The `datetime_format` defaults to `%d/%m/%Y %H:%M:%S` if none is provided. Everything else must be set and there is no whitelist of property names. This ensures compatibility of this image with future versions of OpenVPN monitor without too much maintenance.
 
 So a minimal and accessible, yet non-functional, version of OpenVPN Monitor can be reduced to:
 
