@@ -28,7 +28,7 @@ All settings of OpenVPN Monitor can be dynamically configured via environment va
 The environment variable are organized into two groups:
 
 - `OPENVPNMONITOR_DEFAULT_<PROPERTY>`: populates the global `[OpenVPN-Monitor]` section.
-- `OPENVPNMONITOR_SITES_<INDEX>_<PROPERTY>`: populates each site section.
+- `OPENVPNMONITOR_SITES_<INDEX>_<PROPERTY>`: populates each site section. **Note: if property contains underscores, like `datetime_format` and `show_disconnect`, you must pass those properties without the underscore. See example below.**
 
 By default, GeoIP is automatically available (no additional download step is required). For this reason, the location of the `geoip_data` file is hardcoded in the configuration file. The `datetime_format` defaults to `%d/%m/%Y %H:%M:%S` if none is provided. Everything else must be set and there is not whitelist of property names. This ensures compatibility of this image with future versions of OpenVPN monitor without too much maintenance.
 
@@ -54,6 +54,7 @@ docker run --name openvpn-monitor \
   -e OPENVPNMONITOR_SITES_0_HOST=openvpn-udp \
   -e OPENVPNMONITOR_SITES_0_NAME=UDP \
   -e OPENVPNMONITOR_SITES_0_PORT=5555 \
+  -e OPENVPNMONITOR_SITES_0_SHOWDISCONNECT=True \
   -e OPENVPNMONITOR_SITES_1_ALIAS=TCP \
   -e OPENVPNMONITOR_SITES_1_HOST=openvpn-udp \
   -e OPENVPNMONITOR_SITES_1_NAME=TCP \

@@ -15,13 +15,17 @@ datetime_format=%d/%m/%Y %H:%M:%S
 {{if not (exists (printf "/openvpnmonitor/sites/%s/alias" $i)) }}
 [Site {{$i}}]
 {{ end -}}
-{{- range $foo := ls (printf "/openvpnmonitor/sites/%s" $i) }}
-{{- if eq $foo "alias" }}
-[{{ getv (printf "/openvpnmonitor/sites/%s/%s" $i $foo) }}]
+{{- range $property := ls (printf "/openvpnmonitor/sites/%s" $i) }}
+{{- if eq $property "alias" }}
+[{{ getv (printf "/openvpnmonitor/sites/%s/%s" $i $property) }}]
 {{else -}}
-{{if exists (printf "/openvpnmonitor/sites/%s/%s" $i $foo) }}
-{{- $foo }}={{- getv (printf "/openvpnmonitor/sites/%s/%s" $i $foo) -}}
+{{if exists (printf "/openvpnmonitor/sites/%s/%s" $i $property) }}
+{{- if eq $property "showdisconnect" -}}
+show_disconnect={{- getv (printf "/openvpnmonitor/sites/%s/%s" $i "showdisconnect") -}}
+{{- else -}}
+{{- $property }}={{- getv (printf "/openvpnmonitor/sites/%s/%s" $i $property) -}}
+{{end -}}
 {{end}}
-{{ end -}}
+{{end -}}
 {{end -}}
 {{end -}}
