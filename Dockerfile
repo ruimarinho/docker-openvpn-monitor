@@ -1,7 +1,6 @@
 FROM python:3-alpine
 
 ARG UPSTREAM_VERSION
-ARG MAXMIND_LICENSE_KEY
 
 RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers musl-dev openssl tar \
   && wget -O /usr/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.12.0-alpha3/confd-0.12.0-alpha3-linux-amd64 \
@@ -13,7 +12,7 @@ RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers musl-dev 
   && pip install /openvpn-monitor \
   && apk del --no-cache .build-dependencies \
   && mkdir -p /var/lib/GeoIP/ \
-  && wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf -
+  && wget -O - "https://web.archive.org/web/20191227182209/https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf -
 
 COPY confd /etc/confd
 COPY entrypoint.sh /
