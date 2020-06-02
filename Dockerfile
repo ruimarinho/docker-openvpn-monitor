@@ -22,7 +22,10 @@ RUN go get -v -u github.com/kelseyhightower/confd \
   && cp /openvpn-monitor/openvpn-monitor.conf.example /openvpn-monitor/openvpn-monitor.conf \
   && pip install /openvpn-monitor \
   && mkdir -p /var/lib/GeoIP/ \
-  && wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf -
+  && wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf - \
+  && rm -rf /var/lib/apt/lists/ \
+  && rm -rf $GOROOT \
+  && rm -rf $GOPATH/src
 
 COPY confd /etc/confd
 COPY entrypoint.sh /
