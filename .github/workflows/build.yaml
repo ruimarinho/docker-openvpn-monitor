@@ -20,7 +20,7 @@ jobs:
             echo ::set-output name=version::${GITHUB_SHA::8}
           fi
           echo ::set-output name=build_date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          echo ::set-output name=docker_platforms::linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
+          echo ::set-output name=docker_platforms::linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           echo ::set-output name=docker_username::ruimarinho
           echo ::set-output name=docker_image::ruimarinho/openvpn-monitor
 
@@ -43,6 +43,7 @@ jobs:
         run: |
           docker buildx build --platform ${{ steps.prepare.outputs.docker_platforms }} \
             --output "type=image,push=true" \
+            --progress=plain \
             --build-arg "BUILD_DATE=${{ steps.prepare.outputs.build_date }}" \
             --build-arg "MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY}" \
             --build-arg "VCS_REF=${GITHUB_SHA::8}" \

@@ -3,7 +3,6 @@ FROM python:slim
 ARG UPSTREAM_VERSION
 ARG MAXMIND_LICENSE_KEY
 
-ENV GOROOT /usr/lib/go
 ENV GOPATH /go
 ENV PATH /go/bin:$PATH
 
@@ -24,7 +23,7 @@ RUN go get -v -u github.com/kelseyhightower/confd \
   && mkdir -p /var/lib/GeoIP/ \
   && wget -O - "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz" | tar -C /var/lib/GeoIP/ --strip-components=1 -zxvf - \
   && rm -rf /var/lib/apt/lists/ \
-  && rm -rf $GOROOT \
+  && rm -rf /usr/lib/go-1.11 \
   && rm -rf $GOPATH/src
 
 COPY confd /etc/confd

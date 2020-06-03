@@ -10,8 +10,6 @@ The trusted multi-platform [web-based OpenVPN Monitor](http://openvpn-monitor.op
 * `arm32v7` (`armv7`)
 * `arm32v6` (`armv6`)
 * `i386`
-* `ppc64le`
-* `s390x`
 
 ## What is OpenVPN Monitor?
 
