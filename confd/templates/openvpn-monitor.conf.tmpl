@@ -2,6 +2,8 @@
 {{- range $i := ls "/openvpnmonitor/default" }}
 {{- if eq $i "datetimeformat" }}
 datetime_format={{ replace (getv (printf "/openvpnmonitor/default/%s" $i)) "%%" "%" -1 -}}
+{{- else if eq $i "mapsheight" }}
+maps_height={{- getv (printf "/openvpnmonitor/default/%s" $i) -}}
 {{else}}
 {{$i}}={{ getv (printf "/openvpnmonitor/default/%s" $i) -}}
 {{end -}}
