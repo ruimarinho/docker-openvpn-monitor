@@ -39,7 +39,7 @@ jobs:
       - name: Build multi-platform Docker image
         env:
           MAXMIND_LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
-          UPSTREAM_VERSION: c28d67ed738c0d7083922a43919e08b1d72d8496
+          UPSTREAM_VERSION: "1.1.3"
         run: |
           docker buildx build --platform ${{ steps.prepare.outputs.docker_platforms }} \
             --output "type=image,push=true" \
